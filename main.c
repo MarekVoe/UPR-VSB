@@ -28,6 +28,7 @@ int main() {
     size_t rows, cols = 0;
     scanf("%zu %zu", &rows, &cols);
     char* canvas = initCanvas(rows, cols, &zelva);
+    initZelva(&zelva);
     while(input != 'x') {
         scanf("%c", &input);
         switch(input) {
@@ -74,7 +75,6 @@ char* initCanvas(const size_t rows, const size_t cols, ZELVA* zelva) {
             canvas[i * cols + j] = '.';
         }
     }
-    initZelva(zelva);
     return canvas;
 }
 
