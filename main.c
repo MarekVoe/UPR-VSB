@@ -21,7 +21,6 @@ char* initCanvas(const size_t rows, const size_t cols, ZELVA* zelva);
 void printCanvas(char* canvas, const size_t rows, const size_t cols, ZELVA* zelva);
 void moveTurtle(ZELVA* zelva);
 
-
 int main() {
     char input = 'a';
     ZELVA zelva;
@@ -50,9 +49,14 @@ int main() {
             case 'm':
                 moveTurtle(&zelva);
             break;
+
+            case 'o':
+                // TODO: Replace '.' with o
+            break;
         }
     }
-    printCanvas(canvas, rows, cols, &zelva);  
+    printCanvas(canvas, rows, cols, &zelva);
+    free(canvas);
 }
 
 char* initCanvas(const size_t rows, const size_t cols, ZELVA* zelva) {
