@@ -20,6 +20,7 @@ typedef struct {
 char* initCanvas(const size_t rows, const size_t cols, ZELVA* zelva);
 void printCanvas(char* canvas, const size_t rows, const size_t cols, ZELVA* zelva);
 void moveTurtle(ZELVA* zelva);
+void initZelva(ZELVA* zelva);
 
 int main() {
     char input = 'a';
@@ -59,6 +60,13 @@ int main() {
     free(canvas);
 }
 
+void initZelva(ZELVA* zelva) {
+    zelva->x = 0;
+    zelva->y = 0;
+    zelva->znak = 'z';
+    zelva->dir = RIGHT;
+} 
+
 char* initCanvas(const size_t rows, const size_t cols, ZELVA* zelva) {
     char *canvas = (char*) malloc(rows * cols * sizeof(char));
     for (int i = 0; i < rows; i++) {
@@ -66,10 +74,7 @@ char* initCanvas(const size_t rows, const size_t cols, ZELVA* zelva) {
             canvas[i * cols + j] = '.';
         }
     }
-    zelva->x = 0;
-    zelva->y = 0;
-    zelva->znak = 'z';
-    zelva->dir = RIGHT;
+    initZelva(zelva);
     return canvas;
 }
 
