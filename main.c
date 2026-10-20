@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 // Šlo by udělat ta rotace pomocí linked listu, v tom smyslu, že když je želva otočena doprava a uživatel zadá r, tak v linked listu bude uložena
 // current rotace a jako next node by byla rotace dolů ? A takto pro každou rotaci? Nebo to moc overthinkuju
 typedef enum {
@@ -18,10 +17,10 @@ typedef struct {
     DIRECTION dir;
 } ZELVA;
 
-
 char* initCanvas(const size_t rows, const size_t cols, ZELVA* zelva);
 void printCanvas(char* canvas, const size_t rows, const size_t cols, ZELVA* zelva);
 void moveTurtle(ZELVA* zelva);
+
 
 int main() {
     char input = 'a';
@@ -33,12 +32,19 @@ int main() {
         scanf("%c", &input);
         switch(input) {
             case 'r':
-
-                zelva.dir = RIGHT;
+                if (zelva.dir != 3) {
+                    zelva.dir++;
+                } else {
+                    zelva.dir = RIGHT;
+                }
             break;
 
             case 'l':
-                zelva.dir = LEFT;
+                if (zelva.dir != 0) {
+                    zelva.dir--;
+                } else {
+                    zelva.dir = UP;
+                }
             break;
 
             case 'm':
@@ -83,7 +89,7 @@ void moveTurtle(ZELVA* zelva) {
         break;
 
         case DOWN:
-            zelva->y -= 1;
+            zelva->y += 1;
         break;
 
         case LEFT:
@@ -91,7 +97,7 @@ void moveTurtle(ZELVA* zelva) {
         break;
 
         case UP:
-            zelva->y += 1;
+            zelva->y -= 1;
         break;
     } 
 }
